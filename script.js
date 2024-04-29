@@ -35,7 +35,7 @@ document.querySelector("#student-form").addEventListener("submit", (e) =>{
         showAlert("Por favor completa todos los campos", "danger");
     } 
     else {
-        if (selectedRow == null) {
+        if (selectedRow == null) { 
             const list = document.querySelector("#student-list");
             const row = document.createElement("tr");
 
@@ -59,6 +59,24 @@ document.querySelector("#student-form").addEventListener("submit", (e) =>{
             showAlert("Información del estudiante editada", "info");
         }
 
+        if (selectedRow) {// Actualizar estudiante existente si selectedRow no es null
+          const updatedFirstName = document.querySelector("#fistName").value;
+          const updatedLastName = document.querySelector("#lastName").value; 
+          const updatedRollNo = document.querySelector("#rollNo").value;
+          
+          
+            // Actualizar los datos en la fila seleccionada
+            selectedRow.children[0].textContent = updatedFirstName;
+            selectedRow.children[1].textContent = updatedLastName;
+            selectedRow.children[2].textContent = updatedRollNo;
+
+             // Restablecer selectedRow y el texto del botón (opcional)
+             selectedRow = null;
+             document.querySelector("#student-form button").textContent = "Agregar";
+        
+
+        }
+
         clearFields();
     }
 });
@@ -68,7 +86,7 @@ document.querySelector("#student-form").addEventListener("submit", (e) =>{
 document.querySelector("#student-list").addEventListener("click", (e) => {
 target = e.target;
 if (target.classList.contains("edit")){
-    selectedRow = target.parentElent.parentElent;
+    selectedRow = target.parentElent.parentElent; // Obtener la fila de la tabla
     document.querySelector("#firstName").value = selectedRow.children[0].textContent;
     document.querySelector("#lastName").value = selectedRow.children[1].textContent;
     document.querySelector("#rollNo").value = selectedRow.children[2].textContent;
@@ -80,9 +98,9 @@ if (target.classList.contains("edit")){
 
 document.querySelector("#student-list").addEventListener("click", (e) =>{
     target = e.target;
-    if(target.classList.contains("delete")){
-        target.parentElent.parentElent.remove();
-        showAlert("Student Data Deleted", "danger");
+    if(target.classList.contains("delete") && target.parentElent){
+        target.parentElent.parentElent.remove(); // Eliminar solo si parentElement existe
+        showAlert("Información del estudiante eliminada", "danger");
     }
 });
 
