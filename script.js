@@ -1,9 +1,9 @@
 var selectedRow = null;
 
 // Mostrar alertas
-function showAlert(message, className) {
+function showAlert(message, classNombres) {
     const div = document.createElement("div");
-    div.className = `alert alert-${className}`;
+    div.classNombres = `alert alert-${classNombres}`;
 
     div.appendChild(document.createTextNode(message));
     const container = document.querySelector(".container");
@@ -18,35 +18,38 @@ function clearFields() {
     document.querySelector("#nombres").value = "";
     document.querySelector("#apellidos").value = "";
     document.querySelector("#telefonos").value = "";
+    document.querySelector("#correo").value = "";
     document.querySelector("#direccion").value = "";
 }
 
 // Add Data
 
-document.querySelector("#operadores-form").addEventListener("submit", (e) =>{
+document.querySelector("#operators-form").addEventListener("submit", (e) =>{
     e.preventDefault();
 
     // Get Form Values
     const nombres = document.querySelector("#nombres").value;
     const apellidos = document.querySelector("#apellidos").value;
     const telefono = document.querySelector("#telefono").value;
+    const correo = document.querySelector("#correo").value;
     const direccion = document.querySelector("#direccion").value;
 
 
     
     // Validate
-    if (firstName == "" || lastName == "" || rollNo == "") {
+    if (nombres == "" || apellidos == "" || telefono == "" || correo == "" || direccion == "") {
         showAlert("Por favor completa todos los campos", "danger");
     } 
     else {
         if (selectedRow == null) {
-            const list = document.querySelector("#operadores-list");
+            const list = document.querySelector("#operators-list");
             const row = document.createElement("tr");
 
             row.innerHTML = `
                 <td>${nombres}</td>
                 <td>${apellidos}</td>
                 <td>${telefono}</td>
+                <td>${correo}</td>
                 <td>${direccion}</td>
                 <td>
                     <a href="#" class="btn btn-warning btn-sm edit">Editar</a>
@@ -59,27 +62,30 @@ document.querySelector("#operadores-form").addEventListener("submit", (e) =>{
         else {
             selectedRow.children[0].textContent = nombres;
             selectedRow.children[1].textContent = apellidos;
-            selectedRow.children[3].textContent = telefono;
+            selectedRow.children[2].textContent = telefono;
+            selectedRow.children[3].textContent = correo;
             selectedRow.children[4].textContent = direccion;
             selectedRow = null;
-            showAlert("Información del estudiante editada", "info");
+            showAlert("Complete Información", "info");
         }
 
         if (selectedRow) { // Actualizar estudiante existente si selectedRow no es null
             const updatedNombres = document.querySelector("#nombres").value;
             const updatedApellidos = document.querySelector("#apellidos").value;
             const updatedTelefono = document.querySelector("#telefono").value;
+            const updatedCorreo = document.querySelector("#correo").value;
             const updatedDireccion = document.querySelector("#direccion").value;
         
             // Actualizar los datos en la fila seleccionada
             selectedRow.children[0].textContent = updatedNombres;
             selectedRow.children[1].textContent = updatedApellidos;
-            selectedRow.children[3].textContent = updatedTelefono;
+            selectedRow.children[2].textContent = updatedTelefono;
+            selectedRow.children[3].textContent = updatedCorreo;
             selectedRow.children[4].textContent = updatedDireccion;
         
             // Restablecer selectedRow y el texto del botón (opcional)
             selectedRow = null;
-            document.querySelector("#student-form button").textContent = "Agregar";
+            document.querySelector("#operators-form button").textContent = "Agregar";
         }
 
         clearFields();
@@ -90,7 +96,7 @@ document.querySelector("#operadores-form").addEventListener("submit", (e) =>{
 
 // Edit Data
 
-document.querySelector("#student-list").addEventListener("click", (e) => {
+document.querySelector("#operators-list").addEventListener("click", (e) => {
     target = e.target;
     if (target.classList.contains("edit")) {
       selectedRow = target.parentElement.parentElement; // Obtener la fila de la tabla
