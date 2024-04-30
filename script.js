@@ -15,59 +15,67 @@ function showAlert(message, className) {
 
 // Clear All Fields
 function clearFields() {
-    document.querySelector("#firstName").value = "";
-    document.querySelector("#lastName").value = "";
-    document.querySelector("#rollNo").value = "";
+    document.querySelector("#nombres").value = "";
+    document.querySelector("#apellidos").value = "";
+    document.querySelector("#telefonos").value = "";
+    document.querySelector("#direccion").value = "";
 }
 
 // Add Data
 
-document.querySelector("#student-form").addEventListener("submit", (e) =>{
+document.querySelector("#operadores-form").addEventListener("submit", (e) =>{
     e.preventDefault();
 
     // Get Form Values
-    const firstName = document.querySelector("#firstName").value;
-    const lastName = document.querySelector("#lastName").value;
-    const rollNo = document.querySelector("#rollNo").value;
+    const nombres = document.querySelector("#nombres").value;
+    const apellidos = document.querySelector("#apellidos").value;
+    const telefono = document.querySelector("#telefono").value;
+    const direccion = document.querySelector("#direccion").value;
 
+
+    
     // Validate
     if (firstName == "" || lastName == "" || rollNo == "") {
         showAlert("Por favor completa todos los campos", "danger");
     } 
     else {
         if (selectedRow == null) {
-            const list = document.querySelector("#student-list");
+            const list = document.querySelector("#operadores-list");
             const row = document.createElement("tr");
 
             row.innerHTML = `
-                <td>${firstName}</td>
-                <td>${lastName}</td>
-                <td>${rollNo}</td>
+                <td>${nombres}</td>
+                <td>${apellidos}</td>
+                <td>${telefono}</td>
+                <td>${direccion}</td>
                 <td>
                     <a href="#" class="btn btn-warning btn-sm edit">Editar</a>
                     <a href="#" class="btn btn-danger btn-sm delete">Borrar</a>
             `;
             list.appendChild(row);
             selectedRow = null;
-            showAlert("Estudiante agregado", "success");
+            showAlert("Operador agregado", "success");
         } 
         else {
-            selectedRow.children[0].textContent = firstName;
-            selectedRow.children[1].textContent = lastName;
-            selectedRow.children[2].textContent = rollNo;
+            selectedRow.children[0].textContent = nombres;
+            selectedRow.children[1].textContent = apellidos;
+            selectedRow.children[3].textContent = telefono;
+            selectedRow.children[4].textContent = direccion;
             selectedRow = null;
             showAlert("Información del estudiante editada", "info");
         }
 
         if (selectedRow) { // Actualizar estudiante existente si selectedRow no es null
-            const updatedFirstName = document.querySelector("#firstName").value;
-            const updatedLastName = document.querySelector("#lastName").value;
-            const updatedRollNo = document.querySelector("#rollNo").value;
+            const updatedNombres = document.querySelector("#nombres").value;
+            const updatedApellidos = document.querySelector("#apellidos").value;
+            const updatedTelefono = document.querySelector("#telefono").value;
+            const updatedDireccion = document.querySelector("#direccion").value;
         
             // Actualizar los datos en la fila seleccionada
-            selectedRow.children[0].textContent = updatedFirstName;
-            selectedRow.children[1].textContent = updatedLastName;
-            selectedRow.children[2].textContent = updatedRollNo;
+            selectedRow.children[0].textContent = updatedNombres;
+            selectedRow.children[1].textContent = updatedApellidos;
+            selectedRow.children[3].textContent = updatedTelefono;
+            selectedRow.children[4].textContent = updatedDireccion;
         
             // Restablecer selectedRow y el texto del botón (opcional)
             selectedRow = null;
@@ -86,9 +94,11 @@ document.querySelector("#student-list").addEventListener("click", (e) => {
     target = e.target;
     if (target.classList.contains("edit")) {
       selectedRow = target.parentElement.parentElement; // Obtener la fila de la tabla
-      document.querySelector("#firstName").value = selectedRow.children[0].textContent;
-      document.querySelector("#lastName").value = selectedRow.children[1].textContent;
-      document.querySelector("#rollNo").value = selectedRow.children[2].textContent;
+      document.querySelector("#nombres").value = selectedRow.children[0].textContent;
+      document.querySelector("#apellidos").value = selectedRow.children[1].textContent;
+      document.querySelector("#telefono").value = selectedRow.children[2].textContent;
+      document.querySelector("#coreo").value = selectedRow.children[3].textContent;
+      document.querySelector("#direccion").value = selectedRow.children[4].textContent;
   
       
     }
@@ -104,4 +114,6 @@ document.querySelector("#student-list").addEventListener("click", (e) => {
       showAlert("Información del estudiante eliminada", "danger");
     }
   });
+
+  // crear dataBase
   

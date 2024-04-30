@@ -14,18 +14,22 @@
            <h1 class="display-5 mb-5"><strong>CRUD App</strong></h1> 
         </div>
         <div class="main row justify-content.center">
-            <form action="#" id="student-form" class="row justify-content-center mb-4" autocomplete="off">
+            <form action="#" id="operadores-form" class="row justify-content-center mb-4" autocomplete="off">
                 <div class="col-10 col-mb-8 mb-3">
-                    <label for="firstName">Primer Nombre</label>
-                    <input class="form-control" id="firstName" type="text" placeholder="Entre primer Nombre">
+                    <label for="firstName">Nombres</label>
+                    <input class="form-control" id="nombres" type="text" placeholder="Entre Nombres">
                 </div>
                 <div class="col-10 col-mb8 mb-3">
-                    <label for="lastName">Primer Apellido</label>
-                    <input class="form-control" id="lastName" type="text" placeholder="Entre primer Apellido">
+                    <label for="lastName">Apellidos</label>
+                    <input class="form-control" id="apellidos" type="text" placeholder="Entre Apellidos">
                 </div>
                 <div class="col-10 col-mb-8 mb-3">
-                    <label for="rollNo">Fecha de ingreso</label>
-                    <input class="form-control" id="rollNo" type="text" placeholder="Fecha de ingreso">
+                    <label for="telefono">Telefono</label>
+                    <input class="form-control" id="telefono" type="text" placeholder="Telefono">
+                </div>
+                <div class="col-10 col-mb-8 mb-3">
+                    <label for="telefono">Telefono</label>
+                    <input class="form-control" id="direccion" type="text" placeholder="Direccion">
                 </div>
                 <div class="col-10">
                     <input class="btn btn-success add-btn" type="submit" value="enviar">
@@ -35,15 +39,16 @@
                 <table class="table table-striped table-dark">
                     <thead>
                         <tr>
-                            <th>Primer Nombre</th>
-                            <th>Primer Apellido</th>
-                            <th>Fecha de ingreso</th>
+                            <th>Nombres</th>
+                            <th>Apellidos</th>
+                            <th>Telefono</th>
+                            <th>Direccion</th>
                             <th>Botones</th>
                         </tr>
                     </thead>
-                    <tbody id="student-list">
+                    <tbody id="operadores-list">
                         <tr>
-                            <td>Estimada</td>
+                            <td>operador</td>
                             <td>Programa</td>
                             <td>25</td>
                             <td>
