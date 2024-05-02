@@ -28,11 +28,11 @@
                     <input class="form-control" id="telefono" type="text" placeholder="Telefono">
                 </div>
                 <div class="col-10 col-mb-8 mb-3">
-                    <label for="correo">Telefono</label>
+                    <label for="correo">Correo</label>
                     <input class="form-control" id="correo" type="text" placeholder="Correo">
                 </div>
                 <div class="col-10 col-mb-8 mb-3">
-                    <label for="direccion">Telefono</label>
+                    <label for="direccion">Direccion</label>
                     <input class="form-control" id="direccion" type="text" placeholder="Direccion">
                 </div>
                 <div class="col-10">
@@ -60,9 +60,29 @@
                             <td>direccion</td>
                             <td>
                               <a href="#" class="btn btn-warning btn-sm edit">Editar</a>
-                              <a href="#" class="btn btn-danger btn-sm delete">Borrar</a>  
+                              <a href="#" class="btn btn-danger btn-sm delete">Borrar</a> 
                             </td>
                         </tr>
+                        <title>Botón Cambia de Color</title>
+                        <script>
+                        // Función para cambiar el color del botón y enviar datos
+                        function cambiarColorYEnviarDatos() {
+                          // Obtener el botón por su ID
+                          var boton = document.getElementById('botonColorido');
+                        
+                          // Cambiar el color del botón
+                          boton.style.backgroundColor = boton.style.backgroundColor === 'blue' ? 'red' : 'blue';
+                        
+                          // Aquí puedes agregar la lógica para enviar datos, por ejemplo, usando fetch o XMLHttpRequest
+                          // ...
+                        }
+                        </script>
+                        </head>
+                        <body>
+                        
+                        <!-- Botón que al hacer clic cambia de color y llama a la función para enviar datos -->
+                        <button id="botonColorido" onclick="cambiarColorYEnviarDatos()" style="background-color: blue;">Enviar Datos</button>
+                        
                     </tbody>
                 </table>
             </div>

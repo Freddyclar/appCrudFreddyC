@@ -17,7 +17,7 @@ function showAlert(message, classNombres) {
 function clearFields() {
     document.querySelector("#nombres").value = "";
     document.querySelector("#apellidos").value = "";
-    document.querySelector("#telefonos").value = "";
+    document.querySelector("#telefono").value = "";
     document.querySelector("#correo").value = "";
     document.querySelector("#direccion").value = "";
 }
@@ -113,11 +113,11 @@ document.querySelector("#operators-list").addEventListener("click", (e) => {
 
 // Delete Data 
 
-document.querySelector("#student-list").addEventListener("click", (e) => {
+document.querySelector("#operrators-list").addEventListener("click", (e) => {
     const target = e.target;
     if (target.classList.contains("delete") && target.parentElement) {
       target.parentElement.parentElement.remove(); // Eliminar solo si parentElement existe
-      showAlert("Información del estudiante eliminada", "danger");
+      showAlert("Información del operador", "danger");
     }
   });
 
