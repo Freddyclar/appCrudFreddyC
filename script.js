@@ -103,7 +103,7 @@ document.querySelector("#operators-list").addEventListener("click", (e) => {
       document.querySelector("#nombres").value = selectedRow.children[0].textContent;
       document.querySelector("#apellidos").value = selectedRow.children[1].textContent;
       document.querySelector("#telefono").value = selectedRow.children[2].textContent;
-      document.querySelector("#coreo").value = selectedRow.children[3].textContent;
+      document.querySelector("#correo").value = selectedRow.children[3].textContent;
       document.querySelector("#direccion").value = selectedRow.children[4].textContent;
   
       
@@ -113,7 +113,7 @@ document.querySelector("#operators-list").addEventListener("click", (e) => {
 
 // Delete Data 
 
-document.querySelector("#operrators-list").addEventListener("click", (e) => {
+document.querySelector("#operators-list").addEventListener("click", (e) => {
     const target = e.target;
     if (target.classList.contains("delete") && target.parentElement) {
       target.parentElement.parentElement.remove(); // Eliminar solo si parentElement existe
@@ -122,4 +122,5 @@ document.querySelector("#operrators-list").addEventListener("click", (e) => {
   });
 
   // crear dataBase
+  
   
