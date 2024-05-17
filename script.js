@@ -122,15 +122,35 @@ document.querySelector("#operators-list").addEventListener("click", (e) => {
   });
 
  // Importa el módulo mysql
-const mysql = require('mysql');
+ const target = e.target('mysql');
 
-// Configura los detalles de la conexión a la base de datos
-const connection = mysql.createConnection({
-  host: 'localhost', // Cambia esto según tu configuración
-  user: '',
-  password: '',
-  database: 'crudapp' // Nombre de la base de datos
-});
+ function conectarDB(config) {
+     const conexion = mysql.createConnection(config);
+ 
+     conexion.connect(function(err) {
+         if (err) {
+             console.error('Error al conectar: ' + err.stack);
+             return;
+         }
+         console.log('Conectado con el identificador ' + conexion.threadId);
+     });
+ 
+     // Aquí puedes usar la conexión para realizar consultas a la base de datos
+     // ...
+ 
+     // No olvides cerrar la conexión cuando hayas terminado
+     conexion.end();
+ }
+ 
+ // Uso de la función
+ const configDB = {
+     host: 'localhost', // El servidor donde se encuentra la base de datos
+     user: 'tu_usuario', // Tu usuario de la base de datos
+     password: '', // Tu contraseña de la base de datos
+     database: 'crudapp' // El nombre de tu base de datos
+ };
+ 
+ conectarDB(configDB);
 
 // Conéctate a la base de datos
 connection.connect((err) => {
