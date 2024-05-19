@@ -4,9 +4,9 @@ const mysql = require('mysql');
 // Configura los detalles de la conexión a la base de datos
 const connection = mysql.createConnection({
   host: 'localhost', // Cambia esto según tu configuración
-  user: 'tu_usuario',
-  password: 'tu_contraseña',
-  database: 'crudapp' // Nombre de la base de datos
+  user: 'crudapp',
+  password: '',
+  database: 'operadores' // Nombre de la base de datos
 });
 
 // Conéctate a la base de datos
